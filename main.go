@@ -29,6 +29,8 @@ func main() {
 	router := httprouter.New()
 
 	router.GET("/", noteController.Index)
+	router.GET("/create", noteController.Create)
+	router.POST("/create", noteController.Create)
 
 	log.Fatal(http.ListenAndServe(":9000", router))
 
