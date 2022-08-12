@@ -1,0 +1,45 @@
+{{define "title"}}
+Dashboard
+{{end}}
+
+{{define "css"}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css" integrity="sha512-1k7mWiTNoyx2XtmI96o+hdjP8nn0f3Z2N4oF/9ZZRgijyV4omsKOXEnqL1gKQNPy2MTSP9rIEWGcH/CInulptA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{{end}}
+
+{{define "script"}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function(){
+        $('.table').DataTable()
+    })
+</script>
+
+{{end}}
+
+
+{{define "main"}}
+<h1 class="display-6 mt-5">Ceated Task</h1>
+<a href="/create" class="btn btn-primary mb-4"><i class="fa solid fa-plus"></i>Create</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>Assignor</th>
+            <th>Deadline</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ini tasknya</td>
+            <td>imam</td>
+            <td>12</td>
+            <td>ok</td>
+        </tr>
+    </tbody>
+</table>
+
+
+{{end}}
+
