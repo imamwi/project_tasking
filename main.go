@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"project_tasking/controllers"
@@ -24,14 +25,21 @@ func main() {
 		panic("failed to connect models table")
 	}
 
+	// controller
 	noteController := &controllers.NoteControllers{}
 
+	// routes
 	router := httprouter.New()
 
 	router.GET("/", noteController.Index)
 	router.GET("/create", noteController.Create)
-	router.POST("/create", noteController.Create)
+	router.POST("/store", noteController.Store)
+	router.GET("/edit/:id", noteController.Edit)
+	router.POST("/update/:id", noteController.Update)
+	router.POST("/done/:id", noteController.Done)
+	router.POST("/delete/:id", noteController.Delete)
 
+	fmt.Println("Aplikasi berjalan di http://localhost:9000")
 	log.Fatal(http.ListenAndServe(":9000", router))
 
 }

@@ -18,25 +18,51 @@ Dashboard
 
 
 {{define "main"}}
-<h1 class="display-6 mt-5">Ceated Task</h1>
+<h1 class="display-6 mt-5">Task Assignment</h1>
 <a href="/create" class="btn btn-primary mb-4"><i class="fa solid fa-plus"></i>Create</a>
 
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Task</th>
-            <th>Assignor</th>
+            <th>Assign To</th>
             <th>Deadline</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
+        {{range $note :=.Notes}}
         <tr>
-            <td>ini tasknya</td>
-            <td>imam</td>
-            <td>12</td>
-            <td>ok</td>
+            <td>{{$note.Content}}</td>
+            <td>{{$note.Assignee}}</td>
+            <td>{{$note.Date}}</td>
+            <td>
+                {{if $note.IsDone}}
+                <p class="text-success">Task is Done</p>
+                {{else}}
+                
+                    <a href="/edit/{{$note.ID}}" class="btn btn-sm btn-warning">Edit</a>
+                   <!-- mark as done -->
+                    <form class="d-inline" action="/done/{{$note.ID}}" method="post">
+                            <button type="submit" class="btn btn-sm btn-success">Selesai</button>
+                        </form>
+                    
+                        <!-- delete -->
+                        <form class="d-inline" action="/delete/{{$note.ID}}" method="post">
+                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                        </form>
+               
+
+               
+
+                
+                {{end}}
+
+              
+               
+            </td>
         </tr>
+        {{end}}
     </tbody>
 </table>
 
